@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: api-gateway #服务注册中心测试名
+
+server:
+  port: 9001
+
+zuul:
+  routes:
+    api-a:
+      path: /api/**
+      serviceId: data-core  #如果是/api/users/**路径下的请求，则跳转到data-core
+      stripPrefix: false #代理前缀默认会从请求路径中移除
+    api-b:
+      path: /**
+      serviceId: demo-data  #如果是/bc/users/**路径下的请求，则跳转到demo-data
+      stripPrefix: false
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${security-user.name}:${security-user.password}@localhost:8085/eureka/,http://${security-user.name}:${security-user.password}@localhost:8086/eureka/  #服务注册中心
+
+security-user:
+  name: jsure
+  password: 123456
+
+
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+

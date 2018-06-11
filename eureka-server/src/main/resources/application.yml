@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: server1
+  security:
+    user:
+      name: jsure #eureka 用户名
+      password: 123456 #eureka 密码
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:9000
+
+#security:
+#  basic:
+#    enabled: false
+
+eureka:
+  client:
+    registerWithEureka: false #在默认设置下，该服务注册中心也会将自己作为客户端来尝试注册它自己，
+    fetchRegistry: false
+
+
+#management:
+#  #暴露所有的端点
+#    endpoints:
+#      web:
+#        exposure:
+#          include: '*'
+#          #不暴露的端点
+#          exclude: env
+

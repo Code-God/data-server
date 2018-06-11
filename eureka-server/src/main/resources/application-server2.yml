@@ -1,0 +1,14 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: eureka-server-cluster2
+
+eureka:
+  instance:
+    hostname: localhost #Eureka实例的主机名
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8085/eureka/
